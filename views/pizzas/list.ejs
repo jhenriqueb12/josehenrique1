@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<h2>Lista de Pizzas</h2>
+<a href="/pizzas/nova">Adicionar Pizza</a>
+<table border="1">
+  <tr>
+    <th>Nome</th><th>Preço</th><th>Ingredientes</th><th>Ações</th>
+  </tr>
+  <% pizzas.forEach(pizza => { %>
+    <tr>
+      <td><%= pizza.nome %></td>
+      <td>R$ <%= pizza.preco.toFixed(2) %></td>
+      <td><%= pizza.ingredientes %></td>
+      <td>
+        <a href="/pizzas/editar/<%= pizza.id %>">Editar</a> |
+        <a href="/pizzas/excluir/<%= pizza.id %>">Excluir</a>
+      </td>
+    </tr>
+  <% }) %>
+</table>
+
+<%- include('../partials/footer') %>

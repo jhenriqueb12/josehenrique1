@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h2><%= pizza ? "Editar" : "Nova" %> Pizza</h2>
+<form method="POST" action="/pizzas/salvar">
+  <% if (pizza) { %>
+    <input type="hidden" name="id" value="<%= pizza.id %>">
+  <% } %>
+  <label>Nome: <input type="text" name="nome" value="<%= pizza?.nome || '' %>" required></label><br>
+  <label>Preço: <input type="number" step="0.01" name="preco" value="<%= pizza?.preco || '' %>" required></label><br>
+  <label>Ingredientes:<br>
+    <textarea name="ingredientes"><%= pizza?.ingredientes || '' %></textarea>
+  </label><br>
+  <button type="submit">Salvar</button>
+</form>
+
+<%- include('../partials/footer') %>
